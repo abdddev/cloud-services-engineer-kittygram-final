@@ -4,10 +4,10 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt gunicorn
+RUN pip install -r requirements.txt --no-cache-dir
 
 COPY . .
 
-RUN python manage.py collectstatic --noinput
+RUN chmod +x entrypoint.sh
 
-CMD ["gunicorn", "kittygram_backend.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["./entrypoint.sh"]
