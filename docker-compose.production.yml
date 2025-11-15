@@ -14,7 +14,7 @@ services:
     restart: always
 
   backend:
-    image: ${DOCKER_USERNAME}/kittygram_backend:latest
+    image: abludenov/kittygram_backend:latest
     env_file: .env
     depends_on:
       - postgres
@@ -24,14 +24,14 @@ services:
     restart: always
 
   frontend:
-    image: ${DOCKER_USERNAME}/kittygram_frontend:latest
+    image: abludenov/kittygram_frontend:latest
     env_file: .env
     volumes:
       - static:/static
     restart: always
 
   gateway:
-    image: ${DOCKER_USERNAME}/kittygram_gateway:latest
+    image: abludenov/kittygram_gateway:latest
     ports:
       - "80:80"
     depends_on:
